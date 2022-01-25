@@ -1,40 +1,3 @@
-function computerPlay() {
-    let randomNumber = Math.round(Math.random() * 100);
-    let generator = randomNumber % 3;
-    if(generator === 1) return 'rock';
-    else if(generator === 2) return 'paper';
-    else return 'scissor';
-}
-
-function playRound(playerSelection, computerSelection) {
-    if (playerSelection === 'rock') {
-        if (computerSelection === 'rock') 
-            return ['It\'s a draw', 0];
-        if (computerSelection === 'paper') 
-            return ['You lose! ' + computerSelection + ' beats ' + playerSelection, -1];
-        if (computerSelection === 'scissor')
-            return ['You win! ' + playerSelection + ' beats ' + computerSelection, 1];
-    }
-
-    if (playerSelection === 'paper') {
-        if (computerSelection === 'paper') 
-            return ['It\'s a draw', 0];
-        if (computerSelection === 'scissor') 
-            return ['You lose! ' + computerSelection + ' beats ' + playerSelection, -1];
-        if (computerSelection === 'rock')
-            return ['You win! ' + playerSelection + ' beats ' + computerSelection, 1];
-    }
-
-    if (playerSelection === 'scissor') {
-        if (computerSelection === 'scissor') 
-            return ['It\'s a draw', 0];
-        if (computerSelection === 'rock') 
-            return ['You lose! ' + computerSelection + ' beats ' + playerSelection, -1];
-        if (computerSelection === 'paper')
-            return ['You win! ' + playerSelection + ' beats ' + computerSelection, 1];
-    }
-}
-
 let playerScore = 0, computerScore = 0;
 const buttons = document.querySelectorAll('.icons > button');
 buttons.forEach(buttonCallback);
@@ -86,26 +49,40 @@ function updateScore(e) {
 function buttonCallback(button) {
     button.addEventListener('click', updateScore);
 }
-/*
-function Game() {
-    let gameCount = 5, playerScore = 0, computerScore = 0;
-    for(let i = 0; i < gameCount; i++) {
-        let playerSelection = prompt("your choice? ");
-        let computerSelection = computerPlay();
-        let result = playRound(playerSelection, computerSelection);
-        console.log(result[0]);
-        if(result[1] == 1)
-            playerScore++;
-        else if (result[1] == -1)
-            computerScore++;
-    }
-    console.log('Your score: ' + playerScore);
-    console.log('Computer Score: ' + computerScore);
-    if(playerScore > computerScore)
-        console.log("YOU WON! CONGRATS!");
-    else if (playerScore < computerScore)
-        console.log("YOU LOST!");
-    else
-        console.log("IT'S A DRAW");
+
+function computerPlay() {
+    let randomNumber = Math.round(Math.random() * 100);
+    let generator = randomNumber % 3;
+    if(generator === 1) return 'rock';
+    else if(generator === 2) return 'paper';
+    else return 'scissor';
 }
-*/
+
+function playRound(playerSelection, computerSelection) {
+    if (playerSelection === 'rock') {
+        if (computerSelection === 'rock') 
+            return ['It\'s a draw', 0];
+        if (computerSelection === 'paper') 
+            return ['You lose! ' + computerSelection + ' beats ' + playerSelection, -1];
+        if (computerSelection === 'scissor')
+            return ['You win! ' + playerSelection + ' beats ' + computerSelection, 1];
+    }
+
+    if (playerSelection === 'paper') {
+        if (computerSelection === 'paper') 
+            return ['It\'s a draw', 0];
+        if (computerSelection === 'scissor') 
+            return ['You lose! ' + computerSelection + ' beats ' + playerSelection, -1];
+        if (computerSelection === 'rock')
+            return ['You win! ' + playerSelection + ' beats ' + computerSelection, 1];
+    }
+
+    if (playerSelection === 'scissor') {
+        if (computerSelection === 'scissor') 
+            return ['It\'s a draw', 0];
+        if (computerSelection === 'rock') 
+            return ['You lose! ' + computerSelection + ' beats ' + playerSelection, -1];
+        if (computerSelection === 'paper')
+            return ['You win! ' + playerSelection + ' beats ' + computerSelection, 1];
+    }
+}
