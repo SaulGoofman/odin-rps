@@ -71,15 +71,16 @@ function updateScore(e) {
     playerDiv.textContent = "Player: " + playerScore;
     computerDiv.textContent = "Computer: " + computerScore;
 
-    if(playerScore === 5 || computerScore === 5) {
-        if(playerScore === 5)
-            outputMsg = 'PLAYER DEFEATS COMPUTER!!';
-        else if (computerScore === 5)
-            outputMsg = 'COMPUTER DEFEATS PLAYER!!';
-    }
+    if(playerScore === 5)
+        outputMsg = 'PLAYER DEFEATS COMPUTER!! RESTARTING GAME';
+    else if (computerScore === 5)
+        outputMsg = 'COMPUTER DEFEATS PLAYER!! RESTARTING GAME';
 
     const resultDiv = document.querySelector('.result');
     resultDiv.textContent = outputMsg;
+
+    if (playerScore === 5 || computerScore === 5)
+        setTimeout(newGame, 5000);
 }
 
 function buttonCallback(button) {
