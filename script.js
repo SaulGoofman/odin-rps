@@ -36,6 +36,11 @@ function playRound(playerSelection, computerSelection) {
 }
 
 let playerScore = 0, computerScore = 0;
+const buttons = document.querySelectorAll('.icons > button');
+buttons.forEach(buttonCallback);
+
+const newgame = document.querySelector('#new-game');
+newgame.addEventListener('click', newGame);
 
 function newGame() {
     playerScore = 0;
@@ -66,10 +71,12 @@ function updateScore(e) {
     playerDiv.textContent = "Player: " + playerScore;
     computerDiv.textContent = "Computer: " + computerScore;
 
-    if(playerScore === 5)
-        outputMsg = 'PLAYER DEFEATS COMPUTER!!';
-    else if (computerScore === 5)
-        outputMsg = 'COMPUTER DEFEATS PLAYER!!';
+    if(playerScore === 5 || computerScore === 5) {
+        if(playerScore === 5)
+            outputMsg = 'PLAYER DEFEATS COMPUTER!!';
+        else if (computerScore === 5)
+            outputMsg = 'COMPUTER DEFEATS PLAYER!!';
+    }
 
     const resultDiv = document.querySelector('.result');
     resultDiv.textContent = outputMsg;
@@ -78,13 +85,6 @@ function updateScore(e) {
 function buttonCallback(button) {
     button.addEventListener('click', updateScore);
 }
-
-const buttons = document.querySelectorAll('.icons > button');
-buttons.forEach(buttonCallback);
-
-const newgame = document.querySelector('#new-game');
-newgame.addEventListener('click', newGame);
-
 /*
 function Game() {
     let gameCount = 5, playerScore = 0, computerScore = 0;
